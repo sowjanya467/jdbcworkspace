@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 /*************************************************************************************************************
  *
- * purpose:
+ * purpose:to do commit and roll back operations
  *
  * @author sowjanya467
  * @version 1.0
@@ -44,17 +44,17 @@ public class TransactionExample {
 				con = DriverManager.getConnection("jdbc:mysql://localhost:3306/citizens?useSSL=false", "root", "root");
 
 				con.setAutoCommit(false);
-                pst=con.prepareStatement(query);
-                Savepoint savepoint=con.setSavepoint("save");
-                pst.executeUpdate();
+                                pst=con.prepareStatement(query);
+                                Savepoint savepoint=con.setSavepoint("save");
+                                 pst.executeUpdate();
                 
 				//stmt.executeUpdate(query);
-                pst=con.prepareStatement(query1);
-                int c=pst.executeUpdate();
+                               pst=con.prepareStatement(query1);
+                               int c=pst.executeUpdate();
                 
 				System.out.println(c);
 				/*pst=con.prepareStatement(query2);
-                int a=pst.executeUpdate();
+                                int a=pst.executeUpdate();
 				 System.out.println(a);*/
 				con.commit();
 			} 
